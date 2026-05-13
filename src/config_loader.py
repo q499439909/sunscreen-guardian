@@ -6,7 +6,6 @@ import yaml
 from pathlib import Path
 from typing import Any
 from pydantic import BaseModel
-from pydantic_settings import BaseSettings
 
 
 class WeatherConfig(BaseModel):
