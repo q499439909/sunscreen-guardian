@@ -20,7 +20,7 @@ from .config_loader import get_config
 logger = logging.getLogger(__name__)
 
 # 设置中文字体
-plt.rcParams["font.sans-serif"] = ["Arial Unicode MS", "SimHei", "DejaVu Sans"]
+plt.rcParams["font.sans-serif"] = ["WenQuanYi Zen Hei", "Arial Unicode MS", "SimHei", "DejaVu Sans"]
 plt.rcParams["axes.unicode_minus"] = False
 
 
@@ -38,6 +38,9 @@ class ChartGenerator:
 
     def __init__(self):
         self.config = get_config()
+        # 确保输出目录存在
+        data_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
+        os.makedirs(data_dir, exist_ok=True)
 
     def generate_uv_chart(
         self,
