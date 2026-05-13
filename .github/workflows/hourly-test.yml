@@ -1,0 +1,21 @@
+name: Hourly Test
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # 每小时整点
+  workflow_dispatch:
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      - run: pip install -r requirements.txt
+      - name: Run daily push
+        env:
+          FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
+          DEFAULT_CITY: '深圳'
+        run: python push_daily.py

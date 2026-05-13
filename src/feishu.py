@@ -296,31 +296,9 @@ class MessageBuilder:
 
         content = "\n".join(content_parts)
 
-        # 构建打卡按钮元素
-        elements = [
-            {
-                "tag": "note",
-                "elements": [
-                    {"tag": "plain_text", "content": "👆 点击下方按钮完成打卡"}
-                ]
-            },
-            {
-                "tag": "action",
-                "actions": [
-                    {
-                        "tag": "button",
-                        "text": {"tag": "plain_text", "content": "✅ 打卡"},
-                        "type": "primary",
-                        "url": "https://sunscreen-guardian.loca.lt/checkin"
-                    }
-                ]
-            }
-        ]
-
         return FeishuMessage(
             title=f"☀️ 防晒管家日报 - {date_str}",
             content=content,
-            elements=elements,
         )
 
     def _build_warning(self, max_uv: float) -> str:
